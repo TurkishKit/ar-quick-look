@@ -16,13 +16,24 @@
 		}
 	</style>
 </head>
-<body>
+<body onload="arCheck()">
 	<a href="../">< Ana sayfa</a>
-	<h1>Demo 3 (rel="ar" ve görsel)</h1>
+	<h1>Demo 4 (JS ile uyumluluk kontrolü)</h1>
+	<p>Cihazınız AR Quick Look desteğine sahip değilse aşağıdaki görsele basmanız herhangi bir şeyi tetiklemeyecektir.</p>
+	<noscript><p><b>🛑 Hata: Tarayıcınızda JavaScript'in engellenmemiş olduğundan emin olun.</b></p></noscript>
 	<hr>
-	<a rel="ar" href="../tkbadge.usdz"><img src="../tkbadge.png" alt="TurkishKit Yaka Kartı"></a>
+	<a id="badge"><img src="../tkbadge.png" alt="TurkishKit Yaka Kartı"></a>
 	<footer>
 		<p>Copyright © 2021 TurkishKit — Tüm Hakları Saklıdır</p>
 	</footer>
+	<script>
+		let badge = document.getElementById("badge")
+		function arCheck() {
+			if (badge.relList.supports("ar")) {
+				badge.rel = "ar"
+				badge.href = "../tkbadge.usdz"
+			}
+		}
+	</script>
 </body>
 </html>
